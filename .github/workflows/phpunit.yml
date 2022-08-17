@@ -1,0 +1,32 @@
+name: PHPUnit
+
+on: [push]
+
+jobs:
+  test:
+    name: Test
+
+    runs-on: ubuntu-latest
+
+    # PHPのバージョンを複数指定
+    strategy:
+      matrix:
+        php-version: ['7.4', '8.0']
+
+    steps:
+    # PHP Setup
+    - name: Setup PHP ${{ matrix.php-version }}
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-version }}
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+
+    # テストを実行
+    - name: Run PHPUnit
+      run: php ./vendor/bin/phpunit tests/
+
