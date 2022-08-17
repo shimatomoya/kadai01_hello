@@ -28,5 +28,5 @@ jobs:
 
     # テストを実行
     - name: Run PHPUnit
-      run: php ./vendor/bin/phpunit tests/
+      run: php ./vendor/bin/phpunit test/
 
