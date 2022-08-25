@@ -6,7 +6,7 @@ class Sample
 {
 	public function hello()
 	{
-		return "ello";
+		return "Hello";
 	}
 }
 ?>
